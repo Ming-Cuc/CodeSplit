@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Splitter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        textarea, input, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        #output {
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Splitter</h1>
+        <label for="inputText">Enter text:</label>
+        <textarea id="inputText" placeholder="Enter your text here..."></textarea>
+
+        <label for="delimiter">Enter delimiter:</label>
+        <input type="text" id="delimiter" placeholder="Enter delimiter (e.g., *)">
+
+        <button onclick="splitText()">Split Text</button>
+
+        <h2>Result:</h2>
+        <div id="output">Output will appear here...</div>
+    </div>
+
+    <script>
+        function splitText() {
+            const inputText = document.getElementById('inputText').value;
+            const delimiter = document.getElementById('delimiter').value;
+            const outputDiv = document.getElementById('output');
+
+            if (!delimiter) {
+                outputDiv.textContent = 'Please enter a delimiter!';
+                return;
+            }
+
+            const result = inputText.split(delimiter).join('\n');
+            outputDiv.textContent = result || 'No content to split.';
+        }
+    </script>
+</body>
+</html>
